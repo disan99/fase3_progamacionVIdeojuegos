@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - block
   - Obstacle
+  - Trap
+  - Moneda
   layers:
   - Default
   - TransparentFX
