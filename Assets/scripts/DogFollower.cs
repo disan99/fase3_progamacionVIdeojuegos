@@ -3,9 +3,10 @@ using UnityEngine;
 public class DogFollower : MonoBehaviour
 {
     public Transform target;         // El jugador
-    public float speed = 3.5f;
+    public float baseSpeed = 3.5f;
+    public float speedMultiplier = 0.7f;
     public float stoppingDistance = 1f;
-    public Transform visual;         // El hijo con el modelo del perro
+    public Transform visual;         // El hijo con el modelo del perro      // El hijo con el modelo del perro
 
     void Update()
     {
@@ -13,6 +14,7 @@ public class DogFollower : MonoBehaviour
 
         Vector3 direction = (target.position - transform.position).normalized;
         float distance = Vector3.Distance(transform.position, target.position);
+        float speed = baseSpeed + (ScoreManager.Instance != null ? ScoreManager.Instance.score * speedMultiplier : 0f);
 
         // Movimiento
         if (distance > stoppingDistance)
